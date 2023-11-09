@@ -3,17 +3,13 @@ class Solution:
             N = len(s)
             if N == 1:
                 return 1
-            substrs = list()
             front = 0
+            ans = 0
             for i in range(1,N):
                 if s[i] != s[front]:
-                    substrs.append(s[front:i])
-                    print(front, i)
+                    n = len(s[front:i])
+                    ans += int(n * (n + 1) / 2)
                     front = i
-            substrs.append(s[front:N])
-            ans = 0
-            for substr in substrs:
-                n = len(substr)
-                ans += int(n * (n + 1) / 2)
-            print(substrs)
+            n = len(s[front:N])
+            ans += int(n * (n + 1) / 2)
             return ans % (10**9 + 7)
